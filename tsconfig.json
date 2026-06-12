@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    // Environment
+    "target": "es2022",
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "lib": ["es2023"],
+    "types": ["node"],
+
+    // O tsc só checa tipos — quem emite JS é o tsx (dev) e o tsup (build)
+    "noEmit": true,
+
+    // Typechecking
+    "strict": true,
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "verbatimModuleSyntax": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+
+    // Path aliases
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["src", "prisma"]
+}
