@@ -1,8 +1,17 @@
+import 'dotenv/config'
+import { Pool } from 'pg'
 import { PrismaPg } from '@prisma/adapter-pg'
 import { PrismaClient } from '../generated/prisma/client'
 import { env } from '@/env'
 
-const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL })
+const schema = new URL(env.DATABASE_URL).searchParams.get('schema') ?? 'public'
+
+const pool = new Pool({
+  connectionString: env.DATABASE_URL,
+  options: `-c search_path="${schema}"`,
+})
+
+const adapter = new PrismaPg(pool, { schema })
 
 export const prisma = new PrismaClient({
   adapter,

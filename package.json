@@ -12,11 +12,10 @@
     "test:create-prisma-environment": "npm link ./prisma/vitest-environment-prisma",
     "test:install-prisma-environment": "npm link vitest-environment-prisma",
     "build": "tsup src --out-dir build",
-    "test": "vitest run --dir src/use-cases",
-    "test:watch": "vitest --dir src/use-cases",
-    "pretest:e2e": "run-s test:create-prisma-environment test:install-prisma-environment",
-    "test:e2e": "vitest run --dir src/http",
-    "test:e2e:watch": "vitest --dir src/http",
+    "test": "vitest run --project unit",
+    "test:watch": "vitest --project unit",
+    "test:e2e": "vitest run --project e2e",
+    "test:e2e:watch": "vitest --project e2e",
     "test:coverage": "vitest run --coverage",
     "test:ui": "vitest --ui"
   },
@@ -29,11 +28,13 @@
     "dayjs": "1.11.21",
     "dotenv": "17.4.2",
     "fastify": "5.8.5",
+    "pg": "8.22.0",
     "zod": "4.4.3"
   },
   "devDependencies": {
     "@types/bcryptjs": "2.4.6",
     "@types/node": "25.9.3",
+    "@types/pg": "8.20.0",
     "@types/supertest": "7.2.0",
     "@vitest/coverage-v8": "4.1.8",
     "@vitest/ui": "4.1.8",
@@ -45,6 +46,7 @@
     "tsup": "8.5.1",
     "tsx": "4.22.4",
     "typescript": "5.9.3",
+    "vite": "8.0.16",
     "vite-tsconfig-paths": "6.1.1",
     "vitest": "4.1.8"
   }
