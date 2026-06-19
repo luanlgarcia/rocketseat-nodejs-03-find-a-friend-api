@@ -1,7 +1,8 @@
 import type { FastifyInstance } from 'fastify'
+import { create } from './create'
+import { authenticate } from './authenticate'
 
 export async function orgsRoutes (app: FastifyInstance) {
-  app.get('/orgs', (request, reply) => {
-    return reply.status(200).send()
-  })
+  app.post('/orgs', create)
+  app.post('/sessions', authenticate)
 }
