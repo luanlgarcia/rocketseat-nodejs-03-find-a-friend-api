@@ -1,7 +1,15 @@
-import type { Pets, Prisma } from '@/generated/prisma/client'
+import type { Age, EnergyLevel, Environment, IndependenceLevel, Pets, Prisma, Size } from '@/generated/prisma/client'
 import type { OrgsId } from './orgs-repository'
 
+export interface SearchManyQuery {
+  age?: Age,
+  size?: Size,
+  energyLevel?: EnergyLevel,
+  independenceLevel?: IndependenceLevel,
+  environment?: Environment
+}
+
 export interface PetsRepository {
-  searchMany(orgsId: OrgsId[], page: number): Promise<Pets[]>
+  searchMany(orgsId: OrgsId[], page: number, query?: SearchManyQuery): Promise<Pets[]>
   create(data: Prisma.PetsUncheckedCreateInput): Promise<Pets>
 }

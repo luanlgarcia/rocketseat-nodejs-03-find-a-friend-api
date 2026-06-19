@@ -1,16 +1,21 @@
 import type { Pets, Prisma } from '@/generated/prisma/client'
-import type { PetsRepository } from '../pets-repository'
+import type { PetsRepository, SearchManyQuery } from '../pets-repository'
 import { randomUUID } from 'node:crypto'
 import type { OrgsId } from '../orgs-repository'
 
 export class InMemoryPetsRepository implements PetsRepository {
   public items: Pets[] = []
 
-  async searchMany (orgsId: OrgsId[], page: number) {
+  async searchMany (orgsId: OrgsId[], page: number, query?: SearchManyQuery) {
     const orgsIds = orgsId.map((org) => org.id)
 
     return this.items
       .filter((item) => orgsIds.includes(item.org_id))
+      .filter((item) => !query?.age || item.age === query.age)
+      .filter((item) => !query?.size || item.size === query.size)
+      .filter((item) => !query?.energyLevel || item.energy_level === query.energyLevel)
+      .filter((item) => !query?.independenceLevel || item.independence_level === query.independenceLevel)
+      .filter((item) => !query?.environment || item.environment === query.environment)
       .slice((page - 1) * 20, page * 20)
   }
 
