@@ -6,6 +6,16 @@ import type { OrgsId } from '../orgs-repository'
 export class InMemoryPetsRepository implements PetsRepository {
   public items: Pets[] = []
 
+  async findById (id: string) {
+    const pet = this.items.find((item) => item.id === id)
+
+    if (!pet) {
+      return null
+    }
+
+    return pet
+  }
+
   async searchMany (orgsId: OrgsId[], page: number, query?: SearchManyQuery) {
     const orgsIds = orgsId.map((org) => org.id)
 

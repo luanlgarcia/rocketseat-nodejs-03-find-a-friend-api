@@ -10,6 +10,7 @@ export interface SearchManyQuery {
 }
 
 export interface PetsRepository {
+  findById(id: string): Promise<Pets | null>
   searchMany(orgsId: OrgsId[], page: number, query?: SearchManyQuery): Promise<Pets[]>
   create(data: Prisma.PetsUncheckedCreateInput): Promise<Pets>
 }

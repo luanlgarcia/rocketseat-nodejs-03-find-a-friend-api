@@ -4,6 +4,16 @@ import { prisma } from '@/lib/prisma'
 import type { OrgsId } from '../orgs-repository'
 
 export class PrismaPetsRepository implements PetsRepository {
+  async findById (id: string) {
+    const pet = await prisma.pets.findUnique({
+      where: {
+        id
+      }
+    })
+
+    return pet
+  }
+
   async searchMany (orgsId: OrgsId[], page: number, query?: SearchManyQuery) {
     const pets = await prisma.pets.findMany({
       where: {
