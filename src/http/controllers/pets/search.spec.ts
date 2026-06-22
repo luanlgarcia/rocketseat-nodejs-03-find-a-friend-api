@@ -1,5 +1,5 @@
 import { app } from '@/app'
-import { creaeAndAuthenticateOrg } from '@/utils/test/create-and-authenticate-org'
+import { createAndAuthenticateOrg } from '@/utils/test/create-and-authenticate-org'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 import request from 'supertest'
 
@@ -7,7 +7,7 @@ describe('Search Pets (e2e)', () => {
   beforeAll(async () => {
     await app.ready()
 
-    const { token } = await creaeAndAuthenticateOrg(app, true)
+    const { token } = await createAndAuthenticateOrg(app, true)
 
     await request(app.server)
       .post('/pets')
@@ -60,8 +60,6 @@ describe('Search Pets (e2e)', () => {
         city: 'Example'
       })
       .send()
-
-    console.log(response.body.pets)
 
     expect(response.statusCode).toEqual(200)
     expect(response.body.pets).toHaveLength(3)

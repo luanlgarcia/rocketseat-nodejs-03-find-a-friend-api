@@ -1,18 +1,18 @@
 import { InMemoryOrgsRepository } from '@/repositories/in-memory/in-memory-orgs-repository'
-import { SearchcPetsUseCase } from './search-pets'
+import { SearchPetsUseCase } from './search-pets'
 import { beforeEach, describe, expect, it } from 'vitest'
 import { hash } from 'bcryptjs'
 import { InMemoryPetsRepository } from '@/repositories/in-memory/in-memory-pets-repository'
 
 let orgsRepository: InMemoryOrgsRepository
 let petsRepository: InMemoryPetsRepository
-let sut: SearchcPetsUseCase
+let sut: SearchPetsUseCase
 
 describe('Search Pets Use Case', () => {
   beforeEach(async () => {
     orgsRepository = new InMemoryOrgsRepository()
     petsRepository = new InMemoryPetsRepository()
-    sut = new SearchcPetsUseCase(orgsRepository, petsRepository)
+    sut = new SearchPetsUseCase(orgsRepository, petsRepository)
 
     await orgsRepository.create({
       id: 'org-1',
@@ -21,7 +21,7 @@ describe('Search Pets Use Case', () => {
       address: 'Rua Example',
       city: 'Example City',
       password_hash: await hash('123456', 6),
-      whats_app: 99999999999,
+      whats_app: '99999999999',
     })
 
     await orgsRepository.create({
@@ -31,7 +31,7 @@ describe('Search Pets Use Case', () => {
       address: 'Rua Example',
       city: 'Example City',
       password_hash: await hash('123456', 6),
-      whats_app: 99999999999,
+      whats_app: '99999999999',
     })
 
     await orgsRepository.create({
@@ -41,7 +41,7 @@ describe('Search Pets Use Case', () => {
       address: 'Rua Example',
       city: 'Teste City',
       password_hash: await hash('123456', 6),
-      whats_app: 99999999999,
+      whats_app: '99999999999',
     })
   })
 

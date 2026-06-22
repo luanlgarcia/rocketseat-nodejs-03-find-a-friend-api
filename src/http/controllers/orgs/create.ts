@@ -10,10 +10,7 @@ export async function create (request: FastifyRequest, reply: FastifyReply) {
     password: z.string().min(6),
     city: z.string(),
     address: z.string(),
-    // To do: Arrumar depois para receber string
-
-    // whatsApp: z.string().regex(/^\d{11}$/, 'WhatsApp deve conter 11 dígitos'),
-    whatsApp: z.number(),
+    whatsApp: z.string().regex(/^\d{11}$/),
   })
 
   const {

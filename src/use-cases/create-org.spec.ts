@@ -20,7 +20,7 @@ describe('Create Org Use Case', () => {
       address: 'Rua Example',
       city: 'Example City',
       password: '123456',
-      whatsApp: 99999999999,
+      whatsApp: '99999999999',
     })
 
     expect(org.id).toEqual(expect.any(String))
@@ -33,7 +33,7 @@ describe('Create Org Use Case', () => {
       address: 'Rua Example',
       city: 'Example City',
       password: '123456',
-      whatsApp: 99999999999,
+      whatsApp: '99999999999',
     })
 
     const isPasswordCorrectlyHashd = await compare(
@@ -53,7 +53,7 @@ describe('Create Org Use Case', () => {
       address: 'Rua Example',
       city: 'Example City',
       password: '123456',
-      whatsApp: 99999999999,
+      whatsApp: '99999999999',
     })
 
     await expect(() =>
@@ -63,7 +63,7 @@ describe('Create Org Use Case', () => {
         address: 'Rua Example',
         city: 'Example City',
         password: '123456',
-        whatsApp: 99999999999,
+        whatsApp: '99999999999',
       })
     ).rejects.toBeInstanceOf(EmailAlreadyExistsError)
   })

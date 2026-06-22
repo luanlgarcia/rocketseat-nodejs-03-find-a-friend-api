@@ -21,7 +21,7 @@ describe('Create Pet Use Case', () => {
       address: 'Rua Example',
       city: 'Example City',
       password_hash: await hash('123456', 6),
-      whats_app: 99999999999,
+      whats_app: '99999999999',
     })
   })
 

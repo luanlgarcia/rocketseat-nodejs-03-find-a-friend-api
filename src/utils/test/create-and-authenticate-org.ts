@@ -3,7 +3,7 @@ import { hash } from 'bcryptjs'
 import type { FastifyInstance } from 'fastify'
 import request from 'supertest'
 
-export async function creaeAndAuthenticateOrg (
+export async function createAndAuthenticateOrg (
   app: FastifyInstance,
   isAdmin = false
 ) {
@@ -14,7 +14,7 @@ export async function creaeAndAuthenticateOrg (
       address: 'Rua Example',
       city: 'Example City',
       password_hash: await hash('123456', 6),
-      whats_app: 99999,
+      whats_app: '99999999999',
       role: isAdmin ? 'ADMIN' : 'MEMBER'
     }
   })

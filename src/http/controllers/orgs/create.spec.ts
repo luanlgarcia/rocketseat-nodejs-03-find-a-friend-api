@@ -19,7 +19,7 @@ describe('Create Org (e2e)', () => {
       password: '123456',
       city: 'Example City',
       address: 'Rua Example',
-      whatsApp: 999999999
+      whatsApp: '99999999999'
     })
 
     expect(response.statusCode).toEqual(201)

@@ -9,7 +9,7 @@ interface CreateOrgUseCaseRequest {
   password: string
   city: string
   address: string
-  whatsApp: number
+  whatsApp: string
 }
 
 interface CreateOrgUseCaseResponse {

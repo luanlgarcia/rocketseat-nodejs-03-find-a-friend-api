@@ -1,5 +1,5 @@
 import { app } from '@/app'
-import { creaeAndAuthenticateOrg } from '@/utils/test/create-and-authenticate-org'
+import { createAndAuthenticateOrg } from '@/utils/test/create-and-authenticate-org'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 import request from 'supertest'
 
@@ -13,7 +13,7 @@ describe('Create Pets (e2e)', () => {
   })
 
   it('should be able to create pet', async () => {
-    const { token } = await creaeAndAuthenticateOrg(app, true)
+    const { token } = await createAndAuthenticateOrg(app, true)
 
     const response = await request(app.server)
       .post('/pets')

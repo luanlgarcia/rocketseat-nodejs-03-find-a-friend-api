@@ -3,7 +3,7 @@ import { GetPetDetailsUseCase } from './get-pet-details'
 import { beforeEach, describe, expect, it } from 'vitest'
 import { InMemoryOrgsRepository } from '@/repositories/in-memory/in-memory-orgs-repository'
 import { hash } from 'bcryptjs'
-import { ResouceNotFoundError } from './errors/resource-not-found-error'
+import { ResourceNotFoundError } from './errors/resource-not-found-error'
 
 let orgsRepository: InMemoryOrgsRepository
 let petsRepository: InMemoryPetsRepository
@@ -22,7 +22,7 @@ describe('Get Pet Details Use Case', async () => {
       address: 'Rua Example',
       city: 'Example City',
       password_hash: await hash('123456', 6),
-      whats_app: 99999999999,
+      whats_app: '99999999999',
     })
   })
 
@@ -51,6 +51,6 @@ describe('Get Pet Details Use Case', async () => {
       sut.execute({
         petId: 'non-existing-id'
       })
-    ).rejects.toBeInstanceOf(ResouceNotFoundError)
+    ).rejects.toBeInstanceOf(ResourceNotFoundError)
   })
 })

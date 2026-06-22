@@ -59,7 +59,7 @@ model Org {
   role          Role     @default(MEMBER)
   city          String
   address       String
-  whats_app     Int
+  whats_app     String
 
   pets Pets[]
 
@@ -68,7 +68,7 @@ model Org {
 
 model Pets {
   id                 String            @id @default(uuid())
-  creted_at          DateTime          @default(now())
+  created_at          DateTime          @default(now())
   name               String
   description        String?
   age                Age

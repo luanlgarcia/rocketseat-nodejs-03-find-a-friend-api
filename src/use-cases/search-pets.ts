@@ -16,7 +16,7 @@ interface SearchPetsUseCaseResponse {
   pets: Pets[]
 }
 
-export class SearchcPetsUseCase {
+export class SearchPetsUseCase {
   constructor (
     private orgsRepository: OrgsRepository,
     private petsRepository: PetsRepository

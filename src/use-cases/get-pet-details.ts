@@ -1,6 +1,6 @@
 import type { Pets } from '@/generated/prisma/client'
 import type { PetsRepository } from '@/repositories/pets-repository'
-import { ResouceNotFoundError } from './errors/resource-not-found-error'
+import { ResourceNotFoundError } from './errors/resource-not-found-error'
 
 interface GetPetDetailsUseCaseRequest {
   petId: string
@@ -19,7 +19,7 @@ export class GetPetDetailsUseCase {
     const pet = await this.petsRepository.findById(petId)
 
     if (!pet) {
-      throw new ResouceNotFoundError()
+      throw new ResourceNotFoundError()
     }
 
     return {
