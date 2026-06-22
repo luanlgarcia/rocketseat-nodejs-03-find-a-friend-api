@@ -2,7 +2,7 @@ import { InMemoryOrgsRepository } from '@/repositories/in-memory/in-memory-orgs-
 import { AuthenticateUseCase } from './authenticate'
 import { beforeEach, describe, expect, it } from 'vitest'
 import { hash } from 'bcryptjs'
-import { InvalidCredentialsError } from './errors/invalid-credentials-erros'
+import { InvalidCredentialsError } from './errors/invalid-credentials-error'
 
 let orgsRepository: InMemoryOrgsRepository
 let sut: AuthenticateUseCase
@@ -20,7 +20,7 @@ describe('Authenticae Use Case', () => {
       address: 'Rua Example',
       city: 'Example City',
       password_hash: await hash('123456', 6),
-      whats_app: 99999999999,
+      whats_app: '99999999999',
     })
 
     const { org } = await sut.execute({
